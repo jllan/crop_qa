@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+    <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="http://oceas72q5.bkt.clouddn.com/js/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+
+    <title>水稻农事问答系统</title>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper container col s8 m8 l8">
+          <a href="/" class="brand-logo">水稻农事问答系统</a>
+          <!--<ul class="hide-on-med-and-down">
+            <img src="/static/img/rice.png">
+          </ul>-->
+        </div>
+    </nav>
+
+    <div class="container">
+    <form id="search_form" class="col s12" action="/search/" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">search</i>
+          <input id="icon_prefix" type="text" name="search_for">
+          <label for="icon_prefix">请输入问题</label>
+        </div>
+      </div>
+    </form>
+    </div>
+
+    <div class="container">
+         <div>
+            {% block content %}
+            {% endblock %}
+         </div>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+        © 2017 Copyright Jlan
+        </div>
+      </div>
+    </footer>
+
+
+    <script>
+      $(document).ready(function() {
+          $(".button-collapse").sideNav();
+      });
+      $(document).ready(function(){
+          $('.collapsible').collapsible();
+      });
+      $(document).ready(function(){
+          $('.modal').modal();
+      });
+
+    </script>
+
+
+
+</body>
+</html>

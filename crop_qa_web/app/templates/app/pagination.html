@@ -1,0 +1,29 @@
+<ul class="pagination">
+{# 上一页 #}
+{% if farms.has_previous %}
+  <li class="waves-effect"><a href="?page={{ farms.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+{% else %}
+  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+{% endif %}
+
+{% for page in farms.pages %}
+   {% if page %}
+       {% ifequal page farms.number %}
+            {# 当前页页 #}
+            <li class="active"><a>{{ page }}</a></li>
+       {% else %}
+            {# 指定页 #}
+            <li class="waves-effect"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+       {% endifequal %}
+   {% else %}
+       <li class="waves-effect"><a href="#">...</a></li>
+   {% endif %}
+{% endfor %}
+
+{# 下一页 #}
+{% if farms.has_next %}
+    <li class="waves-effect"><a href="?page={{ farms.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+{% else %}
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+{% endif %}
+</ul>
